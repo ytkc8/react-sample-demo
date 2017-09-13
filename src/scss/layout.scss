@@ -1,0 +1,76 @@
+@function calc-rem($target-px) {
+  @return ($target-px / $ROOT_FONT_SIZE) * 1rem;
+}
+
+$ROOT_FONT_SIZE: 12;
+$ROOT_VIEWPORT_WIDTH: calc-rem(1224);
+
+.page-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  .section-container {
+    width: $ROOT_VIEWPORT_WIDTH;
+    margin-top: 2rem;
+
+    &.primary {
+      width: 20rem;
+      margin-right: 2rem;
+
+      .title {
+        padding: 0 2rem;
+        justify-content: flex-start;
+      }
+
+      .section-content {
+        padding: 2rem 3rem;
+      }
+    }
+
+    &.secondary {
+      width: 20rem;
+      margin-right: 2rem;
+
+      .title {
+        padding: 0 2rem;
+        justify-content: flex-start;
+      }
+
+      .section-content {
+        padding: 2rem 3rem;
+      }
+    }
+
+    &.tertiary {
+      width: 20rem;
+      margin-right: 2rem;
+
+      .title {
+        padding: 0 2rem;
+        justify-content: flex-start;
+      }
+
+      .section-content {
+        padding: 1rem 1rem;
+      }
+    }
+
+    .inner-container {
+      background-color: $WHITE;
+      margin-bottom: 2rem;
+      border: 1px solid $PALE_GREY_TWO;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.inner-box {
+  background-color: $WHITE;
+  border: 1px solid $PALE_GREY_TWO;
+}

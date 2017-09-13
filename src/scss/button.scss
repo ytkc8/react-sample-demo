@@ -1,0 +1,40 @@
+button {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-transform: capitalize;
+  border-radius: 4px;
+  border-style: none;
+  &:hover {
+    cursor: pointer;
+    outline: none;
+  }
+  &:active {
+    outline: none;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+button.primary {
+  margin-right: 1rem;
+  border: solid 1px $BLUISH;
+  background-color: $DARK_SKY_BLUE;
+  font-size: calc-rem(15);
+  font-weight: 600;
+  color: $WHITE;
+  &:active {
+    background-color: $BLUISH;
+  }
+}
+
+button.secondary {
+  margin-right: 1rem;
+  border: solid 1px $PALE_GREY_TWO;
+	background-color: $PALE_GREY;
+  font-size: calc-rem(15);
+  font-weight: 600;
+  color: $DARK_SKY_BLUE;
+  &:active {
+    background-color: $PALE_GREY_TWO;
+  }
+}

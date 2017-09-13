@@ -1,0 +1,16 @@
+input {
+  height: 2.5rem;
+  background-color: $PALE_GREY;
+  border: 1px solid $PALE_GREY_TWO;
+  border-radius: calc-rem(2);
+  padding: 0 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: $BODY_BACKGROUND_COLOR;
+  color: $CHARCOAL_GREY_TWO;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: normal;
+  font-size: calc-rem(10);
+  line-height: 1;
+  letter-spacing: normal;
+}

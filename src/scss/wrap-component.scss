@@ -1,0 +1,52 @@
+.wrapping {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrap {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.wrap-component {
+  padding: 0 1rem;
+  margin-top: 1rem;
+
+  h2.title {
+    padding: 0 1rem;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .label {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    flex-basis: 30%;
+    margin-right: 2rem;
+
+    &:nth-child(3n+0) {
+      margin-right: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:not(.full-width):last-child {
+      flex: 0;
+      flex-basis: 32%;
+    }
+
+    &.full-width {
+      margin-right: 0;
+      flex: 1;
+      flex-basis: 100%;
+    }
+  }
+}
