@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import InnerContainer from '../Containers/InnerContainer'
 import WrapComponentContainer from '../Containers/WrapComponentContainer'
@@ -47,6 +48,6 @@ export default class InputSection extends React.Component {
 }
 
 InputSection.propTypes = {
-  pushWasClicked: React.PropTypes.func.isRequired,
-  enqueueWasClicked: React.PropTypes.func.isRequired
+  pushWasClicked: PropTypes.func.isRequired,
+  enqueueWasClicked: PropTypes.func.isRequired
 }

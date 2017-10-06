@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import InnerContainer from '../Containers/InnerContainer'
 import WrapComponentContainer from '../Containers/WrapComponentContainer'
@@ -80,15 +81,15 @@ export default class BoxSection extends React.Component {
 }
 
 BoxSection.propTypes = {
-  contentList: React.PropTypes.arrayOf(
-    React.PropTypes.shape({
-      key: React.PropTypes.number,
-      name: React.PropTypes.string
+  contentList: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.number,
+      name: PropTypes.string
     })
   ).isRequired,
-  pageContent: React.PropTypes.shape({
-    title: React.PropTypes.string,
-    buttonName: React.PropTypes.string
+  pageContent: PropTypes.shape({
+    title: PropTypes.string,
+    buttonName: PropTypes.string
   }).isRequired,
-  buttonWasClicked: React.PropTypes.func.isRequired
+  buttonWasClicked: PropTypes.func.isRequired
 }

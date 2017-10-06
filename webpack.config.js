@@ -1,39 +1,64 @@
-require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: [
-      'babel-polyfill',
-      './src/js/index.js'
-    ],
-    output: {
-        path: __dirname + '/dist',
-        filename: 'index_bundle.js'
-    },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: 'index.html'
-      })
-    ],
-    module: {
-        loaders: [
+  entry: [
+    'babel-polyfill',
+    'whatwg-fetch',
+    './src/js/index.js'
+  ],
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index_bundle.js'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'index.html'
+    }),
+    new webpack.EnvironmentPlugin({
+      SERVER_URL: 'http://localhost:8080'
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(css|scss)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: [
           {
-            test: /\.(css|scss)$/,
-            loader: 'style!css!sass'
-          },
-          {
-              test: /\.js$/,
-              exclude: /(node_modules)/,
-              loader: "babel-loader"
-          },
-          {
-            test: /\.(jpe?g|png|gif|svg)$/i,
-            loaders: [
-              'file?hash=sha512&digest=hex&name=[hash].[ext]',
-              'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-            ]
+            loader: 'babel-loader'
           }
         ]
-    }
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [
+          'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              gifsicle: {
+                interlaced: false,
+              },
+              optipng: {
+                optimizationLevel: 7,
+              },
+              mozjpeg: {
+                progressive: true,
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
 };

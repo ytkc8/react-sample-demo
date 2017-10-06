@@ -4,11 +4,10 @@ import expect from 'expect'
 import {Router, Route} from 'react-router'
 
 import AppComponent from '../../src/js/AppComponent'
-import AppHeader from '../../src/js/AppHeader'
-import TopPage from '../../src/js/Top/TopPage'
+import AppContainer from '../../src/js/AppContainer'
 
 describe('AppComponent', () => {
-  let appComponent, configuredRoutes, findRoutePropsForComponent
+  let appComponent, configuredRoutes, findRoutePropsForPath
 
   beforeEach(() => {
     appComponent = shallow(<AppComponent/>)
@@ -17,27 +16,22 @@ describe('AppComponent', () => {
     configuredRoutes = routes.nodes.map((route) => {
       return {
         path: route.props.path,
-        componentName: route.props.component.name,
+        component: route.props.component,
         allProps: route.props
       }
     })
 
-    findRoutePropsForComponent = (componentName) => {
+    findRoutePropsForPath = (path) => {
       return configuredRoutes.find(route =>
-        route.componentName == componentName
+        route.path === path
       )
     }
   })
 
-  it('includes the AppHeader route', () => {
-    const appHeader = findRoutePropsForComponent('AppHeader')
+  it('renders AppContainer', () => {
+    const appContainerPath = findRoutePropsForPath('')
 
-    expect(appHeader.path).toBe('')
-  })
-
-  it('includes the top page route', () => {
-    const topPage = findRoutePropsForComponent('TopPage')
-
-    expect(topPage.path).toBe('/')
+    const appContainer = appContainerPath.allProps.render({anyKey: 'props'})
+    expect(appContainer).toEqual(<AppContainer anyKey='props'/>)
   })
 })
