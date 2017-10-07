@@ -1,0 +1,50 @@
+.single-select {
+  position: relative;
+  height: 2.5rem;
+  width: 10rem;
+
+  .input-section {
+    input.input-box {
+      position: absolute;
+      height: 2.5rem;
+      background-color: $PALE_GREY;
+      border: 1px solid $PALE_GREY_TWO;
+      border-radius: calc-rem(2);
+      padding: 0 1rem;
+      font-family: 'Source Sans Pro', sans-serif;
+      color: $CHARCOAL_GREY_TWO;
+      font-size: calc-rem(10);
+    }
+
+    .clear {
+      position: absolute;
+      background-color: transparent;
+      font-size: calc-rem(15);
+      top: 0.4rem;
+      left: 8.5rem;
+    }
+  }
+
+  .select-options {
+    position: absolute;
+    top: 2.8rem;
+    display: grid;
+
+    .option {
+      height: 2rem;
+      width: 10rem;
+      font-size: calc-rem(10);
+      text-align: left;
+      border-radius: unset;
+      border-style: ridge;
+      background-color: transparent;
+
+      &:hover {
+        background-color: $PALE_GREY_TWO;
+      }
+      &:focus {
+        background-color: $PALE_GREY_TWO;
+      }
+    }
+  }
+}

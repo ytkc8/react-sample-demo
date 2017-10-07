@@ -67,11 +67,20 @@ export default class TopPage extends React.Component {
     return (
       <PageContainer>
         <PrimaryContainer>
+          <SingleSelectDropdown options={options}/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+
           <InputSection
             pushWasClicked={this.pushContent}
             enqueueWasClicked={this.enqueueContent}
           />
-        <SingleSelectDropdown options={options}/>
         </PrimaryContainer>
         <SecondaryContainer>
           <BoxSection

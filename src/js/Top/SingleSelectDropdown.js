@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import WrapComponentContainer from '../Containers/WrapComponentContainer'
-
 export default class SingleSelectDropdown extends React.Component {
   constructor(props) {
     super(props)
@@ -13,7 +11,16 @@ export default class SingleSelectDropdown extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.handleOutsideClick = this.handleOutsideClick.bind(this)
     this.clearValue = this.clearValue.bind(this)
+  }
+
+  componentWillMount() {
+    document.addEventListener('click', this.handleOutsideClick)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleOutsideClick)
   }
 
   handleChange(event) {
@@ -30,6 +37,12 @@ export default class SingleSelectDropdown extends React.Component {
     })
   }
 
+  handleOutsideClick(event) {
+    if (event.target.className !== 'option') {
+      this.setState({optionsAreVisible: false})
+    }
+  }
+
   clearValue() {
     this.setState({
       optionsAreVisible: false,
@@ -44,7 +57,7 @@ export default class SingleSelectDropdown extends React.Component {
           return (
             <button
               key={i}
-              className='options'
+              className='option'
               value={option.value}
               onClick={this.handleClick}
             >
@@ -58,19 +71,20 @@ export default class SingleSelectDropdown extends React.Component {
 
   render() {
     return (
-      <WrapComponentContainer>
-        <div className='wrap'>
+      <div className='single-select'>
+        <div className='input-section'>
           <input
-            className='single-select group'
+            type='text'
+            className='input-box'
             value={this.state.inputtedValue}
             onChange={this.handleChange}
           />
-        <button className='clear' onClick={this.clearValue}>x</button>
+          <button className='clear' onClick={this.clearValue}>×</button>
         </div>
-        <div>
+        <div className='select-options'>
           {this.displayOptions()}
         </div>
-      </WrapComponentContainer>
+      </div>
     )
   }
 }
