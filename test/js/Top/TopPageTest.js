@@ -29,6 +29,11 @@ describe('TopPage', () => {
       expect(inputSection.length).toBe(1)
     })
 
+    it('displays the SingleSelectDropdown', () => {
+      const singleSelectDropdown = topPage.find('SingleSelectDropdown')
+      expect(singleSelectDropdown.length).toBe(1)
+    })
+
     it('displays the BoxSection', () => {
       const stackSection = topPage.find('BoxSection')
       expect(stackSection.length).toBe(2)
@@ -39,18 +44,23 @@ describe('TopPage', () => {
     it('sets function to InputSection', () => {
       const inputSection = topPage.find('InputSection')
 
-      expect(inputSection.node.props.pushWasClicked).toEqual(
+      expect(inputSection.props().pushWasClicked).toEqual(
         topPage.instance().pushContent
       )
-      expect(inputSection.node.props.enqueueWasClicked).toEqual(
+      expect(inputSection.props().enqueueWasClicked).toEqual(
         topPage.instance().enqueueContent
       )
+    })
+
+    it('sets options to SingleSelectDropdown', () => {
+      const singleSelect = topPage.find('SingleSelectDropdown')
+      expect(singleSelect.props().options).toExist()
     })
 
     it('sets content list to BoxSection', () => {
       const boxSections = topPage.find('BoxSection')
 
-      const stackBoxProps = boxSections.at(0).node.props
+      const stackBoxProps = boxSections.at(0).props()
       expect(stackBoxProps.contentList).toEqual(
         topPage.instance().state.stackList
       )
@@ -59,7 +69,7 @@ describe('TopPage', () => {
         topPage.instance().popContent
       )
 
-      const queueBoxProps = boxSections.at(1).node.props
+      const queueBoxProps = boxSections.at(1).props()
       expect(queueBoxProps.contentList).toEqual(
         topPage.instance().state.queueList
       )
@@ -81,7 +91,7 @@ describe('TopPage', () => {
         const boxSections = topPage.find('BoxSection')
 
         const expectedList = [content2, content1]
-        const boxProps = boxSections.at(0).node.props
+        const boxProps = boxSections.at(0).props()
         expect(boxProps.contentList).toEqual(expectedList)
       })
 
@@ -93,7 +103,7 @@ describe('TopPage', () => {
         topPage.instance().pushContent(content2)
         const boxSections = topPage.find('BoxSection')
 
-        const boxProps = boxSections.at(0).node.props
+        const boxProps = boxSections.at(0).props()
         expect(boxProps.contentList.length).toBe(1)
       })
     })
@@ -108,7 +118,7 @@ describe('TopPage', () => {
         const boxSections = topPage.find('BoxSection')
 
         const expectedList = [content1, content2]
-        const boxProps = boxSections.at(1).node.props
+        const boxProps = boxSections.at(1).props()
         expect(boxProps.contentList).toEqual(expectedList)
       })
 
@@ -120,7 +130,7 @@ describe('TopPage', () => {
         topPage.instance().enqueueContent(content2)
         const boxSections = topPage.find('BoxSection')
 
-        const boxProps = boxSections.at(1).node.props
+        const boxProps = boxSections.at(1).props()
         expect(boxProps.contentList.length).toBe(1)
       })
     })

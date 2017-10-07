@@ -7,6 +7,7 @@ import TertiaryContainer from '../Containers/TertiaryContainer'
 
 import InputSection from './InputSection'
 import BoxSection from './BoxSection'
+import SingleSelectDropdown from './SingleSelectDropdown'
 
 export default class TopPage extends React.Component {
   constructor(props) {
@@ -55,6 +56,14 @@ export default class TopPage extends React.Component {
       buttonName: 'dequeue'
     }
 
+    const options = [
+      {value: 'head'},
+      {value: 'neck'},
+      {value: 'body'},
+      {value: 'leg'},
+      {value: 'foot'}
+    ]
+
     return (
       <PageContainer>
         <PrimaryContainer>
@@ -62,6 +71,7 @@ export default class TopPage extends React.Component {
             pushWasClicked={this.pushContent}
             enqueueWasClicked={this.enqueueContent}
           />
+        <SingleSelectDropdown options={options}/>
         </PrimaryContainer>
         <SecondaryContainer>
           <BoxSection
